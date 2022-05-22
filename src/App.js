@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
 import './App.css';
+import LogOut from './components/Logout';
+import {
+  Home,
+  Profile,
+  Login,
+  NewPost,
+  Register,
+  Posts,
+} from './routes'
+
 
 function App() {
+  const [username, setUsername] = useState(window.localStorage.getItem('username'));
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState(window.localStorage.getItem('token'))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Stranger's Things</h1>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/posts">Posts</Link>
+        {token ? <Link to="/new-post">New Post</Link> : null}
+        {token ? <Link to="/profile">Profile</Link> : null}
+        {token ? null : <Link to="/register">Register</Link>}
+        {token ? null : <Link to="/login">Login</Link>}
+        <LogOut token={token} setToken={setToken}/>
+      </nav>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="profile" element={<Profile token={token} username={username} />} />
+          <Route path="login" element={<Login username={username} password={password} setUsername={setUsername} setPassword={setPassword} setToken={setToken}/>} />
+          <Route path="new-post" element={<NewPost token={token} />} />
+          <Route path="register" element={<Register username={username} password={password} setUsername={setUsername} setPassword={setPassword} />} />
+          <Route path="posts" element={<Posts token={token} username={username}/>} />
+      </Routes>
     </div>
   );
 }
