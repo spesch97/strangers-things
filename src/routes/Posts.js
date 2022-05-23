@@ -37,6 +37,7 @@ const Posts = ({ token, username }) => {
             ) : null}
             {post.author.username === username ? (
               <button
+                className="button"
                 type="button"
                 onClick={async () => {
                   deletePost(token, postID, posts, setPosts);
