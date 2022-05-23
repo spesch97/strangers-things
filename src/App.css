@@ -1,31 +1,131 @@
-.App {
+.site-layout-content {
+  padding: 126pxpx;
+  background: #fff;
+  display: flex;
+  justify-content: center;
   text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  border-right: solid 1px #001529;
+  border-left: solid 1px #001529;
+  border-bottom: solid 1px #001529;
+}
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+  padding-left: 7px;
 }
+.contentBody {
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: center;
+  padding:10px;
+}
+
+.textBlueSubtitle {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding:10px;
+  color: #1890ff;
+}
+
+.subSubtitle {
+  display: flex;
+  justify-content: center;
+}
+
+.textBlue {
+  color: #1890ff;
+  padding-right: 25px;
+}
+
+.button {
+  color: #1890ff;
+  margin-top: 7px;
+  max-width: 100px;
+}
+
+.logoutButton {
+  color: #1890ff;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.creatingContainer {
+  display: flex;
+  justify-content: center;
+}
+.searchBar {
+  color: #1890ff;
+  padding: 12px;
+}
+
+.messageButton {
+  margin-top: 5px;
+  color: #1890ff;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.columnContainer {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+.postContainer {
+  padding: 15px;
+  margin: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: solid 1px #001529;
+  box-shadow: 5px 5px 2px 1px #001529;
+
+}
+
+.rowContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toFromMessage {
+  color: #1890ff;
+}
+
+.message {
+  padding-left: 20px;
+}
+.checkbox {
+  align-self: flex-start
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {

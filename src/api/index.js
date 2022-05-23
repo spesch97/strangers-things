@@ -7,8 +7,8 @@ export const fetchAllPosts = async () => {
     const data = await response.json();
     const fetchedPosts = data.data.posts;
     return fetchedPosts;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -28,8 +28,8 @@ export const fetchRegister = async (username, password) => {
     });
     const data = await response.json();
     return data;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -49,8 +49,8 @@ export const fetchLogin = async (username, password) => {
     });
     const data = await response.json();
     return data;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -73,7 +73,6 @@ export const postNewPost = async (token, title, description, price, location, wi
       }),
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -90,7 +89,6 @@ export const deletePost = async (token, postID, posts, setPosts) => {
       },
     });
     const data = await response.json();
-    console.log(data);
     if (data) {
         const newPosts = posts.filter(post => post._id !== postID)
         setPosts(newPosts);
@@ -110,7 +108,6 @@ export const fetchProfile = async (token) => {
       },
     });
     const data = await response.json();
-    console.log(data);
     const profileInfo = data.data.messages
     return profileInfo;
   } catch (error) {
@@ -134,7 +131,6 @@ export const messageFetch = async (token, message, postID) => {
             })
         })
     const data = await response.json()
-    console.log(data)
     if (data) {
         alert('Your message has been sent')
     }

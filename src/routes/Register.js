@@ -1,3 +1,5 @@
+import { UserOutlined } from "@ant-design/icons";
+import { Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { fetchRegister } from "../api";
 
@@ -9,43 +11,53 @@ const Register = ({ username, setUsername, password, setPassword }) => {
 
   const passwordChangeHandler = (event) => {
     setPassword(event.target.value);
-  }
-  
+  };
+
   const authFormSubmitHandler = async (event) => {
     event.preventDefault();
     const data = await fetchRegister(username, password);
-    console.log(data)
     if (data.success) {
-    navigate("/login")
+      setPassword("");
+      setUsername("");
+      alert("Registration successful. Please login.");
+      navigate("/login");
     } else {
-      alert(`${data.error.message}`)
+      alert(`${data.error.message}`);
     }
-  }
-    return (
-      <form
-        id="login"
-        onSubmit={authFormSubmitHandler}
-        >
+  };
+  return (
+    <>
+      <h3 className="subtitle">Register</h3>
+      <h6 className="subSubtitle">
+        To register please create a username and a password with at least 5
+        characters
+      </h6>
+      <form id="login" onSubmit={authFormSubmitHandler}>
         <label>Username</label>
-        <input
-            id="username"
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={usernameChangeHandler}
+        <Input
+          placeholder="username"
+          prefix={<UserOutlined />}
+          id="username"
+          type="text"
+          value={username}
+          onChange={usernameChangeHandler}
         />
         <label>Password</label>
-        <input
+        <Input
+          placeholder="minimum of 5 characters"
+          prefix={<UserOutlined />}
           id="pasword"
           type="password"
-          placeholder="minimum 5 characters"
           value={password}
           minLength={5}
           onChange={passwordChangeHandler}
         />
-        <button type="submit">Submit</button>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
-    )
-  }
+    </>
+  );
+};
 
 export default Register;

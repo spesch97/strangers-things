@@ -1,7 +1,5 @@
 export default function Home () {
     return (
-      <main style={{ padding: "1rem 0" }}>
-        <h2>Home</h2>
-      </main>
+      <h3 className="textBlueSubtitle">Welcome to a place to post and sell your unwanted items. Please view the posts and if you see something you want you must login or register to send the seller a message. </h3>
     );
   }
